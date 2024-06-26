@@ -18,5 +18,6 @@ public class CurrencyConverter {
 
         // Example usage:
         System.out.println(currency.getData("USD")); // should print 1
+        // use something in the data.json file
     }
 }
