@@ -16,8 +16,10 @@ public class CurrencyConverter {
             return;
         }
 
-        // Example usage:
-        System.out.println(currency.getData("USD")); // should print 1
-        // use something in the data.json file
+        System.out.println(currency.getData("USD"));
+        // ask for currency to convert from
+        // if this is not USD convert to usd
+        // then convert to other currency!!!
+
     }
 }

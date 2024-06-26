@@ -29,7 +29,7 @@ public class JsonFileReader {
         } else {
             // Handle case where currency is not found
             System.err.println("Currency not found: " + currency);
-            return 0.0;  // Or throw an exception or return an appropriate value
+            return -1;  // Or throw an exception or return an appropriate value
         }
     }
 }
