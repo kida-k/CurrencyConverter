@@ -17,6 +17,7 @@ public class CurrencyConverter {
             System.err.println("Problem with data.json: " + e.getMessage());
             return;
         }
+        //scanner
         Scanner in = new Scanner(System.in);
         System.out.println("What currency would you like to start from?");
         String name1 = in.nextLine();
