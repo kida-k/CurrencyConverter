@@ -20,7 +20,7 @@ public class CurrencyConverter {
         System.out.println("Converted value: " + convertedValue);
         // ask for currency to convert from
         // if this is not USD convert to usd
-        // then convert to other currency!!!
+        // then convert to other currency!!! one two three
     }
 
     public double usdConversion(String curr, double value){
