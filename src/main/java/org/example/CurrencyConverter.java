@@ -3,51 +3,36 @@ package org.example;
 import org.example.CurrencyData.JsonFileReader;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
-import java.util.Scanner;
 
 public class CurrencyConverter {
 
-    private static JsonFileReader currency;
+    private static final DecimalFormat defactor = new DecimalFormat("0.000");
 
-    public static void main(String[] args) {
+    private static JsonFileReader currency;
+    public CurrencyConverter(){
         try {
             currency = new JsonFileReader();
         } catch (IOException e) {
-            System.err.println("Problem with data.json: " + e.getMessage());
-            return;
+            System.err.println("Problem with data.json: \n" + e.getMessage());
         }
-        //scanner method
-        Scanner in = new Scanner(System.in);
-        System.out.println("What currency would you like to start from?");
-        String name1 = in.nextLine();
-        System.out.println("What currency would you like to convert to?");
-        String name2 = in.nextLine();
-        CurrencyConverter converter = new CurrencyConverter();
-        System.out.println("How much do you want to convert?");
-        double value1 = in.nextDouble();
-        double convertedValue = converter.currTocurr(name1 , value1, name2);
-        System.out.println("converted value: " + convertedValue);
-
-        // ask for currency to convert from
-        // if this is not USD convert to usd
-        // then convert to other currency!!!
-
-
-        //System.out.println("What is your currency you would like to start with?");
     }
-    public double usdConversion (String whatever, double value)
+    public double usdConversion (String currency, double value)
     {
-        return currency.getData(whatever)*value;
+        return Double.parseDouble(defactor.format((CurrencyConverter.currency.getData(currency)*value)));
     }
 
-    public double conversionToUSD (String curr, double value)
+    public double conversionToUSD (String currency, double value)
     {
-        return value/currency.getData(curr);
+
+        return Double.parseDouble(defactor.format((value/CurrencyConverter.currency.getData(currency))));
+        //(value/CurrencyConverter.currency.getData(currency))
     }
 
-    public double currTocurr (String curr1, double value, String curr2)
+    public double currToCurr (String curr1, double amount, String curr2)
     {
-        return usdConversion(curr2, conversionToUSD(curr1,value));
+        return Double.parseDouble(defactor.format((usdConversion(curr2, conversionToUSD(curr1,amount)))));
+        //decfor.format(num
     }
 }
